@@ -131,6 +131,7 @@ flutter:
     - assets/images/
     - assets/category/
     - assets/auth/
+    - assets/on_boarding/
 
 #  assets:
 #    - assets/images/

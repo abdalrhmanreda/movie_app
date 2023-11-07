@@ -1,1 +1,12 @@
-{}
+{
+  "onBoardingButtonText": "Next",
+  "onBoardingTitle1": "Discover the Cinematic Universe",
+  "onBoardingTitle2": "Personalized Recommendations",
+  "onBoardingTitle3":"Seamless Movie Search" ,
+  "onBoardingDescription1": "Embark on a journey through the world of movies and immerse yourself in captivating stories, from classic films to the latest blockbusters. Our app is your gateway to endless entertainmen",
+  "onBoardingDescription2": "Experience tailored movie recommendations that cater to your unique tastes. Let our app be your movie guide, ensuring you never miss a film that suits your preferences" ,
+  "onBoardingDescription3": "Effortlessly find your favorite movies or explore new gems with our intuitive search feature. Get instant access to movie details, reviews, and more. Your cinematic journey begins here" ,
+  "onBoardingTextButtonText": "Skip"
+
+
+}

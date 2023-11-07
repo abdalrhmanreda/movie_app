@@ -27,4 +27,10 @@ class Assets {
   static const String imagesAppLogo = 'assets/images/app_logo.svg';
   static const String imagesEmptyImage = 'assets/images/empty_image.svg';
   static const String imagesSplash = 'assets/images/splash.jpg';
+  static const String onBoardingOnboarding1 =
+      'assets/on_boarding/onboarding1.svg';
+  static const String onBoardingOnboarding2 =
+      'assets/on_boarding/onboarding2.svg';
+  static const String onBoardingOnboarding3 =
+      'assets/on_boarding/onboarding3.svg';
 }

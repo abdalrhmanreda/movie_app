@@ -4,6 +4,7 @@ import 'package:movie_app/ui/features/authentication/presentation/screens/login_
 import 'package:movie_app/ui/features/authentication/presentation/screens/register_screen/presentation/screens/register_screen.dart';
 import 'package:movie_app/ui/features/movie_details/screens/movie_details_.dart';
 import 'package:movie_app/ui/intro_screen/components/splash_screen_.dart';
+import 'package:movie_app/ui/intro_screen/screens/on_boarding_screen.dart';
 import 'package:movie_app/ui/layout/screens/layout.dart';
 
 Route? generateRoute(RouteSettings settings) {
@@ -19,5 +20,7 @@ Route? generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const RegisterScreen());
     case RoutePath.login:
       return MaterialPageRoute(builder: (context) => const LoginScreen());
+    case RoutePath.onBoarding:
+      return MaterialPageRoute(builder: (context) => const OnBoardingScreen());
   }
 }

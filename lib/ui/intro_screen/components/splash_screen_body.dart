@@ -36,7 +36,7 @@ class SplashScreenBody extends StatelessWidget {
               isRepeatingAnimation: true,
               onFinished: () {
                 CustomNavigation.navigateAndFinishNyNamed(
-                    context, RoutePath.layout);
+                    context, RoutePath.onBoarding);
               },
               totalRepeatCount: 4,
             ),

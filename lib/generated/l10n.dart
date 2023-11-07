@@ -49,6 +49,86 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Next`
+  String get onBoardingButtonText {
+    return Intl.message(
+      'Next',
+      name: 'onBoardingButtonText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discover the Cinematic Universe`
+  String get onBoardingTitle1 {
+    return Intl.message(
+      'Discover the Cinematic Universe',
+      name: 'onBoardingTitle1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personalized Recommendations`
+  String get onBoardingTitle2 {
+    return Intl.message(
+      'Personalized Recommendations',
+      name: 'onBoardingTitle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Seamless Movie Search`
+  String get onBoardingTitle3 {
+    return Intl.message(
+      'Seamless Movie Search',
+      name: 'onBoardingTitle3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Embark on a journey through the world of movies and immerse yourself in captivating stories, from classic films to the latest blockbusters. Our app is your gateway to endless entertainmen`
+  String get onBoardingDescription1 {
+    return Intl.message(
+      'Embark on a journey through the world of movies and immerse yourself in captivating stories, from classic films to the latest blockbusters. Our app is your gateway to endless entertainmen',
+      name: 'onBoardingDescription1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Experience tailored movie recommendations that cater to your unique tastes. Let our app be your movie guide, ensuring you never miss a film that suits your preferences`
+  String get onBoardingDescription2 {
+    return Intl.message(
+      'Experience tailored movie recommendations that cater to your unique tastes. Let our app be your movie guide, ensuring you never miss a film that suits your preferences',
+      name: 'onBoardingDescription2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Effortlessly find your favorite movies or explore new gems with our intuitive search feature. Get instant access to movie details, reviews, and more. Your cinematic journey begins here`
+  String get onBoardingDescription3 {
+    return Intl.message(
+      'Effortlessly find your favorite movies or explore new gems with our intuitive search feature. Get instant access to movie details, reviews, and more. Your cinematic journey begins here',
+      name: 'onBoardingDescription3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skip`
+  String get onBoardingTextButtonText {
+    return Intl.message(
+      'Skip',
+      name: 'onBoardingTextButtonText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -21,5 +21,21 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "onBoardingButtonText": MessageLookupByLibrary.simpleMessage("Next"),
+        "onBoardingDescription1": MessageLookupByLibrary.simpleMessage(
+            "Embark on a journey through the world of movies and immerse yourself in captivating stories, from classic films to the latest blockbusters. Our app is your gateway to endless entertainmen"),
+        "onBoardingDescription2": MessageLookupByLibrary.simpleMessage(
+            "Experience tailored movie recommendations that cater to your unique tastes. Let our app be your movie guide, ensuring you never miss a film that suits your preferences"),
+        "onBoardingDescription3": MessageLookupByLibrary.simpleMessage(
+            "Effortlessly find your favorite movies or explore new gems with our intuitive search feature. Get instant access to movie details, reviews, and more. Your cinematic journey begins here"),
+        "onBoardingTextButtonText":
+            MessageLookupByLibrary.simpleMessage("Skip"),
+        "onBoardingTitle1": MessageLookupByLibrary.simpleMessage(
+            "Discover the Cinematic Universe"),
+        "onBoardingTitle2": MessageLookupByLibrary.simpleMessage(
+            "Personalized Recommendations"),
+        "onBoardingTitle3":
+            MessageLookupByLibrary.simpleMessage("Seamless Movie Search")
+      };
 }

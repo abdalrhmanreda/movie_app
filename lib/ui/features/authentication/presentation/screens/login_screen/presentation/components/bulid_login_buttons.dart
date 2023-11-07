@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/config/routes/routes_path.dart';
+import 'package:movie_app/core/components/custom_navigatation.dart';
 
 import '../../../../../../../../../config/colors/app_colors.dart';
 import '../../../../../../../../core/components/custom_button.dart';
@@ -17,7 +19,9 @@ Column buildLoginButtons({
         onPressed: () {},
       ),
       CustomButton(
-        onPressed: () {},
+        onPressed: () {
+          CustomNavigation.navigateByNamedTo(context, RoutePath.layout);
+        },
         text: 'login',
         height: 37.h,
         width: MediaQuery.of(context).size.width,
