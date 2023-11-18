@@ -24,7 +24,8 @@ class MovieDetailsScreen extends StatelessWidget {
       },
       builder: (context, state) {
         return ConditionalBuilder(
-          condition: state is! LoadingState,
+          condition: AppCubit.get(context).movieModel != null &&
+              AppCubit.get(context).similarMoviesModel != null,
           builder: (context) => Scaffold(
             body: CustomScrollView(
               physics: const BouncingScrollPhysics(),

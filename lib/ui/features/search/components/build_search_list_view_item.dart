@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constant/app_constant.dart';
+import 'package:movie_app/ui/features/home/models/movie_model.dart';
 import 'package:movie_app/ui/features/search/controller/search_cubit.dart';
 
 import '../../../../config/routes/routes_path.dart';
@@ -12,11 +13,12 @@ import 'build_textsIn_list_view_item.dart';
 InkWell buildSearchListViewItem({
   required BuildContext context,
   required int index,
-  required num id,
+  required MovieModel searchMovieModel,
 }) {
   return InkWell(
     onTap: () {
-      AppCubit.get(context).getMovieDetails(movieId: id);
+      AppCubit.get(context)
+          .getMovieDetails(movieId: searchMovieModel!.results[index].id!);
       CustomNavigation.navigateByNamedTo(context, RoutePath.movieDetails);
     },
     child: Row(
@@ -29,18 +31,16 @@ InkWell buildSearchListViewItem({
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             image: DecorationImage(
-              image: CachedNetworkImageProvider(SearchCubit.get(context)
-                          .searchMovieModel!
-                          .results[index]
-                          .backdropPath ==
+              image: CachedNetworkImageProvider(searchMovieModel
+                          .results[index].backdropPath ==
                       null
-                  ? 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shoshinsha-design.com%2F2020%2F05%2F%25E3%2583%258E%25E3%2583%25BC%25E3%2582%25A4%25E3%2583%25A1%25E3%2583%25BC%25E3%2582%25B8%25E3%2582%25A2%25E3%2582%25A4%25E3%2582%25B3%25E3%2583%25B3-no-image-icon%2F.html&psig=AOvVaw3NMwpQ1MkcuG-54dMijrhi&ust=1698544226572000&source=images&cd=vfe&ved=0CBIQjRxqFwoTCIiciZ3Rl4IDFQAAAAAdAAAAABAE'
+                  ? '${ApiConstant.imagePath}${SearchCubit.get(context).searchMovieModel!.results[index].posterPath}'
                   : '${ApiConstant.imagePath}${SearchCubit.get(context).searchMovieModel!.results[index].backdropPath}'),
               fit: BoxFit.fitHeight,
             ),
           ),
         ),
-        buildTextsInListViewItem(context, index),
+        buildTextsInListViewItem(context, searchMovieModel.results[index]),
       ],
     ),
   );

@@ -38,4 +38,29 @@ class Results {
   bool? video;
   num? voteAverage; // Changed from double? to num?
   num? voteCount; // Changed from double? to num?
+
+  Map<String, dynamic> toMap() => {
+        'backdrop_path': backdropPath,
+        'id': id,
+        'original_title': originalTitle,
+        'overview': overview,
+        'poster_path': posterPath,
+        'release_date': releaseDate,
+        'title': title,
+        'video': video,
+        'vote_average': voteAverage,
+        'vote_count': voteCount
+      };
+
+  Results(
+      this.backdropPath,
+      this.id,
+      this.originalTitle,
+      this.overview,
+      this.posterPath,
+      this.releaseDate,
+      this.title,
+      this.video,
+      this.voteAverage,
+      this.voteCount);
 }

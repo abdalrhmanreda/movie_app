@@ -53,10 +53,8 @@ class SearchScreenBody extends StatelessWidget {
                     itemBuilder: (context, index) => buildSearchListViewItem(
                       context: context,
                       index: index,
-                      id: SearchCubit.get(context)
-                          .searchMovieModel!
-                          .results[index]
-                          .id!,
+                      searchMovieModel:
+                          SearchCubit.get(context).searchMovieModel!,
                     ),
                     separatorBuilder: (context, index) =>
                         myDivider(AppConstant.deviceWidth(context), 1),

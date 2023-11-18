@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie_app/config/colors/app_colors.dart';
 import 'package:movie_app/core/api/api_constant.dart';
 import 'package:movie_app/ui/features/home/models/movie_model.dart';
 
@@ -37,36 +36,20 @@ Column buildHorzListView({
             width: AppConstant.deviceWidth(context) / 3,
             child: Column(
               children: [
-                Stack(
-                  children: [
-                    buildBranchContainer(
-                        context: context,
-                        id: model.results[index].id!,
-                        image:
-                            '${ApiConstant.imagePath}${model.results[index].backdropPath}'),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                          Text(
-                            model.results[index].voteAverage!
-                                .toStringAsFixed(1),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                  color: const Color(AppColors.kPrimaryColor),
-                                ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                buildBranchContainer(
+                    context: context,
+                    id: model.results[index].id!,
+                    title: model.results[index].title!,
+                    originalTitle: model.results[index].originalTitle!,
+                    overview: model.results[index].overview!,
+                    posterPath: model.results[index].posterPath!,
+                    releaseDate: model.results[index].releaseDate!,
+                    video: model.results[index].video!,
+                    voteAverage: model.results[index].voteAverage!,
+                    voteCount: model.results[index].voteCount!,
+                    image: '${model.results[index].backdropPath}' == null
+                        ? '${ApiConstant.imagePath}${model.results[index].backdropPath}'
+                        : '${ApiConstant.imagePath}${model.results[index].posterPath}'),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(

@@ -21,6 +21,14 @@ class GetCategorySuccess extends AppStates {}
 
 class GetCategoryDataSuccess extends AppStates {}
 
+class AddFavSuccessState extends AppStates {}
+
+class GetFavSuccessState extends AppStates {}
+
+class DeleteFavSuccessState extends AppStates {}
+
+class DeleteFavLoadingState extends AppStates {}
+
 class FailureState extends AppStates {
   final String error;
 

@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/api/api_constant.dart';
 import 'package:movie_app/core/api/dio_helper.dart';
@@ -15,8 +17,8 @@ class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitial());
   static AppCubit get(context) => BlocProvider.of(context);
 
-  List<Widget> screens = [
-    const HomeScreen(),
+  List<Widget> screens = const [
+    HomeScreen(),
     SearchScreen(),
     BrowseScreen(),
     WatchListScreen(),
@@ -151,6 +153,51 @@ class AppCubit extends Cubit<AppStates> {
         .then((value) {
       categoryData = MovieModel.fromJson(value.data);
       emit(GetCategoryDataSuccess());
+    }).catchError((error) {
+      emit(FailureState(error: error.toString()));
+    });
+  }
+
+  void addToFav({required Results results}) {
+    emit(LoadingState());
+    FirebaseFirestore.instance
+        .collection('favMovie')
+        .add(results.toMap())
+        .then((value) {
+      getFavMovie();
+      emit(AddFavSuccessState());
+    }).catchError((error) {
+      print("-----------------------$error");
+      emit(FailureState(error: error.toString()));
+    });
+  }
+
+  List<Results> favMovies = [];
+  List<String> favMoviesId = [];
+  void getFavMovie() {
+    emit(LoadingState());
+    FirebaseFirestore.instance.collection('favMovie').get().then((value) {
+      favMovies = [];
+      for (var element in value.docs) {
+        favMoviesId.add((element.id));
+        favMovies.add(Results.fromJson(element.data()));
+      }
+      print('********************************************${favMoviesId}');
+      emit(GetFavSuccessState());
+    }).catchError((error) {
+      emit(FailureState(error: error.toString()));
+    });
+  }
+
+  void removeFromFav({required String id}) {
+    emit(DeleteFavLoadingState());
+    FirebaseFirestore.instance
+        .collection('favMovie')
+        .doc(id)
+        .delete()
+        .then((value) {
+      getFavMovie();
+      emit(DeleteFavSuccessState());
     }).catchError((error) {
       emit(FailureState(error: error.toString()));
     });

@@ -5,6 +5,7 @@ import 'package:movie_app/core/components/progress_indector.dart';
 import 'package:movie_app/ui/cubit/app_cubit.dart';
 
 import '../../../../core/components/custom_smooth_indicator.dart';
+import '../../../../core/components/flutter_toast.dart';
 import 'build_list_view.dart';
 import 'build_page_view.dart';
 
@@ -15,7 +16,13 @@ class HomeScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     var pageController = PageController();
     return BlocConsumer<AppCubit, AppStates>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is AddFavSuccessState) {
+          showToast(
+              message: 'Movie Added from favourite successfully',
+              state: ToastState.SUCCESS);
+        }
+      },
       builder: (context, state) {
         return ConditionalBuilder(
           condition: AppCubit.get(context).releasesMovieModel != null &&

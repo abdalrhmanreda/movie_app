@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -10,11 +11,14 @@ import 'package:movie_app/ui/cubit/app_cubit.dart';
 import 'package:movie_app/ui/cubit/observer/blocObserver.dart';
 import 'package:movie_app/ui/features/search/controller/search_cubit.dart';
 
+import 'firebase_options.dart';
 import 'generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   runApp(const MovieApp());
@@ -37,7 +41,8 @@ class MovieApp extends StatelessWidget {
                   ..getPopular()
                   ..getReleases()
                   ..getTopRated()
-                  ..getCategory(),
+                  ..getCategory()
+                  ..getFavMovie(),
               ),
               BlocProvider(
                 create: (context) => SearchCubit(),
@@ -53,7 +58,7 @@ class MovieApp extends StatelessWidget {
                 ],
                 debugShowCheckedModeBanner: false,
                 themeMode: ThemeMode.dark,
-                initialRoute: RoutePath.splash,
+                initialRoute: RoutePath.layout,
                 onGenerateRoute: generateRoute,
                 theme: Style.darkTheme,
               ),

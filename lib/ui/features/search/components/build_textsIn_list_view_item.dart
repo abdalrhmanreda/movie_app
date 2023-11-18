@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/constant/app_constant.dart';
-import 'package:movie_app/ui/features/search/controller/search_cubit.dart';
+import 'package:movie_app/ui/features/home/models/movie_model.dart';
 
 import '../../../../config/colors/app_colors.dart';
 
-Expanded buildTextsInListViewItem(BuildContext context, int index) {
+Expanded buildTextsInListViewItem(BuildContext context, Results results) {
   return Expanded(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '${SearchCubit.get(context).searchMovieModel!.results[index].title}',
+          '${results.title}',
           maxLines: 2,
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                 fontSize: 15.sp,
@@ -22,7 +22,7 @@ Expanded buildTextsInListViewItem(BuildContext context, int index) {
           height: AppConstant.deviceHeight(context) / 90,
         ),
         Text(
-          '${SearchCubit.get(context).searchMovieModel!.results[index].overview}',
+          '${results.overview}',
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -37,7 +37,7 @@ Expanded buildTextsInListViewItem(BuildContext context, int index) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              '${SearchCubit.get(context).searchMovieModel!.results[index].releaseDate}',
+              '${results.releaseDate}',
               maxLines: 2,
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 12.sp,
@@ -56,11 +56,7 @@ Expanded buildTextsInListViewItem(BuildContext context, int index) {
                     width: 2,
                   ),
                   Text(
-                    SearchCubit.get(context)
-                        .searchMovieModel!
-                        .results[index]
-                        .voteAverage!
-                        .toStringAsFixed(1),
+                    results.voteAverage!.toStringAsFixed(1),
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: const Color(AppColors.kPrimaryColor),
                         ),

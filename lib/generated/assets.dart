@@ -25,6 +25,7 @@ class Assets {
   static const String categoryWar = 'assets/category/war.jpg';
   static const String categoryWestern = 'assets/category/western.jpg';
   static const String imagesAppLogo = 'assets/images/app_logo.svg';
+  static const String imagesEmpty = 'assets/images/empty.png';
   static const String imagesEmptyImage = 'assets/images/empty_image.svg';
   static const String imagesSplash = 'assets/images/splash.jpg';
   static const String onBoardingOnboarding1 =
