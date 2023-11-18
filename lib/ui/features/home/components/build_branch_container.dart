@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:movie_app/config/routes/routes_path.dart';
 import 'package:movie_app/core/components/custom_navigatation.dart';
-import 'package:movie_app/ui/features/home/models/movie_model.dart';
 
 import '../../../../core/constant/app_constant.dart';
 import '../../../cubit/app_cubit.dart';
+import '../models/movie_model.dart';
 
 InkWell buildBranchContainer({
   required BuildContext context,
@@ -21,8 +21,6 @@ InkWell buildBranchContainer({
   bool? video,
   num? voteAverage, // Changed from double? to num?
   num? voteCount,
-  bool addToFav = true,
-  int? index,
 }) {
   return InkWell(
     onTap: () {
@@ -48,23 +46,18 @@ InkWell buildBranchContainer({
           padding: const EdgeInsets.all(3.0),
           child: InkWell(
             onTap: () {
-              if (addToFav) {
-                AppCubit.get(context).addToFav(
-                    results: Results(
-                        backdropPath,
-                        id,
-                        originalTitle,
-                        overview,
-                        posterPath,
-                        releaseDate,
-                        title,
-                        video,
-                        voteAverage,
-                        voteCount));
-              } else {
-                AppCubit.get(context).removeFromFav(
-                    id: AppCubit.get(context).favMoviesId[index!]);
-              }
+              AppCubit.get(context).addToFav(
+                  results: Results(
+                      backdropPath,
+                      id,
+                      originalTitle,
+                      overview,
+                      posterPath,
+                      releaseDate,
+                      title,
+                      video,
+                      voteAverage,
+                      voteCount));
             },
             child: const Icon(
               IconlyBroken.bookmark,

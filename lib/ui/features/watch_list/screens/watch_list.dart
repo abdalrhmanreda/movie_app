@@ -7,6 +7,7 @@ import 'package:movie_app/core/components/progress_indector.dart';
 import 'package:movie_app/core/constant/app_constant.dart';
 import 'package:movie_app/generated/assets.dart';
 import 'package:movie_app/ui/cubit/app_cubit.dart';
+import 'package:swipe_to/swipe_to.dart';
 
 import '../components/build_watch_list_view_item.dart';
 
@@ -36,11 +37,18 @@ class WatchListScreen extends StatelessWidget {
             child: ListView.separated(
               scrollDirection: Axis.vertical,
               physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) => buildWatchListViewItem(
-                context: context,
-                index: index,
-                id: AppCubit.get(context).favMovies[index].id!,
-                list: AppCubit.get(context).favMovies,
+              itemBuilder: (context, index) => SwipeTo(
+                child: buildWatchListViewItem(
+                  context: context,
+                  index: index,
+                  id: AppCubit.get(context).favMovies[index].id!,
+                  list: AppCubit.get(context).favMovies,
+                ),
+                onRightSwipe: () {
+                  AppCubit.get(context).removeFromFav(
+                      id: AppCubit.get(context).favMoviesId[index]);
+                  AppCubit.get(context).favMoviesId.removeAt(index);
+                },
               ),
               separatorBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.all(10.0),

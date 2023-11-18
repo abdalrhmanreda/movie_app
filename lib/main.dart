@@ -9,6 +9,7 @@ import 'package:movie_app/config/themes/themes.dart';
 import 'package:movie_app/core/api/dio_helper.dart';
 import 'package:movie_app/ui/cubit/app_cubit.dart';
 import 'package:movie_app/ui/cubit/observer/blocObserver.dart';
+import 'package:movie_app/ui/features/authentication/auth_cubit/auth_cubit.dart';
 import 'package:movie_app/ui/features/search/controller/search_cubit.dart';
 
 import 'firebase_options.dart';
@@ -47,6 +48,9 @@ class MovieApp extends StatelessWidget {
               BlocProvider(
                 create: (context) => SearchCubit(),
               ),
+              BlocProvider(
+                create: (context) => AuthCubit(),
+              ),
             ],
             child: SafeArea(
               child: MaterialApp(
@@ -58,7 +62,7 @@ class MovieApp extends StatelessWidget {
                 ],
                 debugShowCheckedModeBanner: false,
                 themeMode: ThemeMode.dark,
-                initialRoute: RoutePath.layout,
+                initialRoute: RoutePath.splash,
                 onGenerateRoute: generateRoute,
                 theme: Style.darkTheme,
               ),
